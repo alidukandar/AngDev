@@ -40,5 +40,21 @@
         </div>
         <w3>
         </w3>
+
+        <form name="myForm">
+            Email:
+            <input type="email" name="myAddress" ng-model="text">
+            <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+        </form>
+
+        <form  name="myForm1" ng-init="myText = 'post@myweb.com'">
+            Email:
+            <input type="email" name="myAddress" ng-model="myText" required>
+            <h1>Status</h1>
+            
+            <br /> Valid : {{myForm1.myAddress.$valid}}
+            <br /> Dirty : {{myForm1.myAddress.$dirty}}
+            <br /> Touched : {{myForm1.myAddress.$touched}}
+        </form>
     </body>
 </html>

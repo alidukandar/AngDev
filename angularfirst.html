@@ -10,6 +10,12 @@
                 $scope.lastName = "Doe";
             });
 
+            app.controller('customersCtrl', function($scope, $http) {
+                $http.get("http://www.w3schools.com/angular/customers_mysql.php")
+                .then(function (response) {$scope.names = response.data.records;});
+            });
+
+
             app.directive("w3TestDirective", function() {
                 return {
                     template : "I was made in a directive constructor!"
@@ -23,6 +29,15 @@
             });
 
         </script>
+        <style>
+            input.ng-invalid {
+                background-color: lightblue;
+            }
+            input.ng-valid {
+                background-color: lightgreen;
+            }
+            
+        </style>
     </head>
     <body ng-app="myApp">
         <div>
@@ -40,11 +55,11 @@
         </div>
         <w3>
         </w3>
-
-        <form name="myForm">
+<!Validations>
+        <form name="myForm2">
             Email:
             <input type="email" name="myAddress" ng-model="text">
-            <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+            <span ng-show="myForm2.myAddress.$error.email">Not a valid e-mail address</span>
         </form>
 
         <form  name="myForm1" ng-init="myText = 'post@myweb.com'">
@@ -56,5 +71,22 @@
             <br /> Dirty : {{myForm1.myAddress.$dirty}}
             <br /> Touched : {{myForm1.myAddress.$touched}}
         </form>
+
+        <form name="myForm">
+            Enter your name:
+            <input name="myName" ng-model="myText1" required type="tel">
+        </form>
+
+
+        <div ng-controller="customersCtrl"> 
+
+        <table border="1px" >
+            <tr ng-repeat="x in names">
+                <td>{{ x.Name }}</td>
+                <td>{{ x.Country }}</td>
+            </tr>
+        </table>
+
+        </div>
     </body>
 </html>

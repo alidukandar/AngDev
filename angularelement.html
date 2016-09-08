@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script type="text/javascript">         
+            var app = angular.module('app', []);         
+            app.controller("mainCtrl", function ($scope, $element) { 
+                 $scope.clickme = function () {                 
+                     var elem = angular.element(document.querySelector('#txtName'));                 
+                     console.log(elem.val())// console the value of textbox  
+                     alert("this is alert");          
+                                             var divelem = angular.element(document.querySelector('#newDiv'));
+                        divelem.css("background-color", "#ff00ff"); 
+                    }; 
+                    $scope.mouseoverFunc = function(){
+                        var divelem = angular.element(document.querySelector('#newDiv'));
+                        divelem.css("background-color", "#ff00ff");
+                    };        
+                });    
+        </script>
+    </head>
+    <body ng-app="app">     
+        <div ng-controller="mainCtrl">         
+            <input type="text" id="txtName" value="Shailendra Chauhan" />         
+            <button type="button" ng-click="clickme()" data-ng-mouseover="mouseoverFunc()">Click me</button>     
+        </div> 
+        <div id="newDiv">
+        </div>
+    </body>
+</html>

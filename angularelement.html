@@ -12,8 +12,14 @@
                         divelem.css("background-color", "#ff00ff"); 
                     }; 
                     $scope.mouseoverFunc = function(){
+                      //alert('This is mouse over');
                         var divelem = angular.element(document.querySelector('#newDiv'));
                         divelem.css("background-color", "#ff00ff");
+                    };
+                    $scope.mouseleave = function(){
+                      //alert('This is mouse over');
+                        var divelem = angular.element(document.querySelector('#newDiv'));
+                        divelem.css("background-color", "#0000ff");
                     };        
                 });    
         </script>
@@ -21,9 +27,9 @@
     <body ng-app="app">     
         <div ng-controller="mainCtrl">         
             <input type="text" id="txtName" value="Shailendra Chauhan" />         
-            <button type="button" ng-click="clickme()" data-ng-mouseover="mouseoverFunc()">Click me</button>     
+            <button type="button" ng-click="clickme()" data-ng-mouseover="mouseoverFunc()" ng-mouseleave="mouseleave()">Click me</button>     
         </div> 
-        <div id="newDiv">
+        <div id="newDiv"> New Div
         </div>
     </body>
 </html>
